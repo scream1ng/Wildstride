@@ -1,0 +1,32 @@
+const paths={
+ sparkle:'<path d="m12 2 2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6Z"/>',
+ gem:'<path d="m12 2 8 9-8 11-8-11Z"/><path d="M4 11h16M12 2l-3 9 3 11 3-11Z"/>',
+ settings:'<path d="m9 3-1 3-3 1-2 4 2 3v3l4 2 3-1 3 1 4-2v-3l2-3-2-4-3-1-1-3Z"/><circle cx="12" cy="11" r="3"/>',
+ play:'<path d="m8 4 12 8-12 8Z" fill="currentColor" stroke="none"/>',
+ pause:'<path d="M8 5v14M16 5v14" stroke-width="4"/>',
+ 'arrow-right':'<path d="M4 12h16m-6-6 6 6-6 6"/>',
+ 'arrow-left':'<path d="M20 12H4m6-6-6 6 6 6"/>',
+ 'arrow-up':'<path d="M12 20V4m-6 6 6-6 6 6"/>',
+ 'arrow-down':'<path d="M12 4v16m-6-6 6 6 6-6"/>',
+ 'chevron-left':'<path d="m15 5-7 7 7 7"/>',
+ 'chevron-right':'<path d="m9 5 7 7-7 7"/>',
+ compass:'<circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5Z"/>',
+ paw:'<ellipse cx="5.5" cy="8" rx="2" ry="3"/><ellipse cx="11" cy="5.5" rx="2" ry="3"/><ellipse cx="17" cy="6.5" rx="2" ry="3"/><ellipse cx="21" cy="11.5" rx="1.5" ry="2.5"/><path d="M5 18c0-3 4-7 7-7s7 4 7 7c0 4-4 2-7 2s-7 2-7-2Z"/>',
+ leaf:'<path d="M20 3C7 1 1 8 5 15s15 4 15-12ZM4 21 16 8"/>',
+ bolt:'<path d="m14 2-9 12h7l-2 8 10-13h-7Z"/>',
+ tide:'<path d="M12 2C9 7 4 11 4 15a8 8 0 0 0 16 0c0-4-5-8-8-13Z"/><path d="M7 15c0 3 2 4 4 4"/>',
+ heart:'<path d="M12 21S2 14 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 6-10 13-10 13Z"/>',
+ trophy:'<path d="M7 3h10v6a5 5 0 0 1-10 0V3Zm5 11v6m-4 1h8M7 5H3v3a4 4 0 0 0 4 4m10-7h4v3a4 4 0 0 1-4 4"/>',
+ lock:'<rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V6a4 4 0 0 1 8 0v4m-4 5v2"/>',
+ check:'<path d="m5 12 4 4L19 6"/>',
+ close:'<path d="m6 6 12 12M6 18 18 6"/>',
+ sound:'<path d="M4 9h4l5-5v16l-5-5H4Zm13-2a7 7 0 0 1 0 10m3-13a11 11 0 0 1 0 16"/>',
+ phone:'<rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2"/>',
+ download:'<path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/>',
+ moon:'<path d="M20 14A9 9 0 0 1 10 3a9 9 0 1 0 10 11Z"/>',
+ refresh:'<path d="M20 5v5h-5M4 19v-5h5m-4-5a8 8 0 0 1 14-4l1 5M4 14l1 5a8 8 0 0 0 14-4"/>',
+ magnet:'<path d="M4 4v9a8 8 0 0 0 16 0V4h-5v9a3 3 0 0 1-6 0V4H4Zm0 5h5m6 0h5"/>',
+ flag:'<path d="M5 22V3m0 0c5-4 9 4 15 0v11c-6 4-10-4-15 0"/>'
+};
+export function icon(name){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]||paths.sparkle}</svg>`;}
+export function hydrateIcons(root=document){root.querySelectorAll('[data-icon]').forEach(el=>{el.innerHTML=icon(el.dataset.icon);});}

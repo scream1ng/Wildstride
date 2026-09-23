@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a1918"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Find your wild. An immersive creature runner: three worlds, nine evolutions, and one more adventure. Play anywhere, even offline.">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preload" href="assets/forest.webp" as="image"><link rel="preload" href="assets/creatures.webp" as="image"><link rel="stylesheet" href="style.css">
+<title>Wildstride · Find your wild</title>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="world-backdrop" id="backdrop" aria-hidden="true"></div><div class="atmosphere" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="camp" id="camp">
+    <header class="app-header"><a class="wordmark" href="./" aria-label="Wildstride home"><span data-icon="sparkle"></span> WILDSTRIDE</a><div class="header-actions"><div class="energy-pill" aria-label="Energy"><span data-icon="gem"></span><b id="balance">0</b></div><button class="round-button" id="settings" aria-label="Settings"><span data-icon="settings"></span></button></div></header>
+    <section class="screen explore" id="explore" aria-label="Explore worlds">
+      <div class="world-heading"><div class="eyebrow" id="world-number">WORLD 01 · THE BEGINNING</div><h1 id="world-title">Verdant Ruins</h1><p id="world-subtitle">Follow your wild.</p></div>
+      <div class="hero-stage" id="hero-stage"><div class="hero-glow"></div><div class="hero-shadow"></div><div class="creature hero-creature" id="hero-creature" role="img" aria-label="Mossling"></div><button class="world-arrow previous" id="previous-world" aria-label="Previous world"><span data-icon="chevron-left"></span></button><button class="world-arrow next" id="next-world" aria-label="Next world"><span data-icon="chevron-right"></span></button><div class="hero-badge" id="hero-badge"><span class="tiny-dot"></span> YOUR ADVENTURE STARTS HERE</div></div>
+      <div class="world-selector" id="worlds" role="group" aria-label="Choose a world"></div>
+      <div class="launch-panel"><button class="active-companion" id="active-companion"></button><div class="unlock-copy" id="unlock-copy" hidden></div><button class="primary play-button" id="play"><span data-icon="play"></span><span id="play-label">LET’S RUN</span><span data-icon="arrow-right"></span></button><div class="best-line" id="best-line"></div></div>
+    </section>
+    <section class="screen library" id="companions" aria-label="Your companions" hidden><div class="page-heading"><div class="eyebrow">YOUR LITTLE LEGENDS</div><h1>Wild at heart.</h1><p>Small beginnings. Extraordinary friends.</p></div><div id="collection"></div><div class="collection-note"><span data-icon="sparkle"></span><span>Every adventure brings you closer.<br>Evolve at 120 and 350 bond XP.</span></div></section>
+    <section class="screen library" id="upgrades" aria-label="Permanent upgrades" hidden><div class="page-heading"><div class="eyebrow">A LITTLE STRONGER, EVERY RUN</div><h1>Room to grow.</h1><p>Permanent boosts. For every companion.</p></div><div id="upgrade-list"></div><p class="small-note">Earned through adventure. No purchases. No timers.</p></section>
+    <nav class="tab-bar" aria-label="Main navigation"><button data-tab="explore" class="selected" aria-current="page"><span data-icon="compass"></span><span>Explore</span><i></i></button><button data-tab="companions"><span data-icon="paw"></span><span>Companions</span><i></i></button><button data-tab="upgrades"><span data-icon="sparkle"></span><span>Upgrades</span><i></i></button></nav>
+  </div>
+  <section class="game-screen" id="game-screen" hidden aria-label="Endless runner">
+    <canvas id="scene" tabindex="0" aria-label="Runner playfield. Swipe left or right to change lanes, up to jump, down to slide."></canvas><div class="game-vignette"></div>
+    <div class="run-hud"><div class="run-heading"><div><div class="eyebrow" id="run-world"></div><div class="distance"><span id="distance">0</span><small>m</small></div></div><div class="header-actions"><div class="energy-pill"><span data-icon="gem"></span><b id="run-energy">0</b></div><button class="round-button" id="pause" aria-label="Pause run"><span data-icon="pause"></span></button></div></div><div class="hearts" id="health" aria-label="3 hearts remaining"></div></div>
+    <div class="countdown" id="countdown" hidden><div class="eyebrow">FIND YOUR STRIDE</div><strong id="countdown-number">3</strong><p>Swipe to move · ↑ jump · ↓ slide</p></div>
+    <div class="run-controls" id="run-controls"><button data-action="left" aria-label="Move left"><span data-icon="arrow-left"></span></button><div><button data-action="jump" aria-label="Jump"><span data-icon="arrow-up"></span></button><button data-action="slide" aria-label="Slide"><span data-icon="arrow-down"></span></button></div><button data-action="right" aria-label="Move right"><span data-icon="arrow-right"></span></button></div>
+    <div class="hit-flash" id="hit-flash"></div>
+    <section class="run-overlay" id="run-overlay" hidden aria-live="polite"></section>
+  </section>
+  <section class="evolution-screen" id="evolution-screen" hidden aria-label="Companion evolution"></section>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div class="loading-screen" id="loading-screen"><span data-icon="sparkle"></span><h2>WILDSTRIDE</h2><p>A little wild is loading…</p><div class="loading-track"><div id="loading-bar"></div></div></div>
+</main>
+<dialog id="sheet"><div class="sheet-handle"></div><div id="sheet-content"></div></dialog>
+<script type="module" src="app.js"></script>
+</body></html>
