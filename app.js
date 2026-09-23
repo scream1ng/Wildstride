@@ -4,6 +4,8 @@ import {createRun,moveRun,stepRun} from './runner.js';
 import {GameRenderer,loadAssets} from './renderer.js';
 
 const $=id=>document.getElementById(id),canvas=$('scene'),sheet=$('sheet');
+function fitInstalledScreen(){if(navigator.standalone!==true)return;const portrait=matchMedia('(orientation: portrait)').matches;const height=portrait?Math.max(screen.width,screen.height):Math.min(screen.width,screen.height);$('app').style.height=`${Math.max(innerHeight,height)}px`;}
+fitInstalledScreen();window.addEventListener('resize',fitInstalledScreen);window.addEventListener('pageshow',fitInstalledScreen);
 const images=['forest','neon','ocean'],symbols=['leaf','bolt','tide'],accents=['#dcf79b','#dcc1f5','#a4e9e4'];
 const subtitles=['Follow your wild.','Find your spark.','Go a little deeper.'];
 let save,preferences={sound:true,haptics:true,tutorial:false};

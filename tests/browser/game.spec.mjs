@@ -10,6 +10,19 @@ async function openGame(page,save=freshSave(),url='/'){
  await expect(page.locator('#loading-screen')).toBeHidden();
 }
 
+test('installed iPhone fills the screen when its viewport is shorter',async({page})=>{
+ await page.setViewportSize({width:402,height:812});
+ await page.addInitScript(()=>{Object.defineProperty(navigator,'standalone',{value:true});Object.defineProperty(screen,'width',{value:402});Object.defineProperty(screen,'height',{value:874});});
+ await openGame(page);
+ expect((await page.locator('#app').boundingBox()).height).toBe(874);
+ await page.setViewportSize({width:402,height:800});
+ await expect.poll(async()=>(await page.locator('#app').boundingBox()).height).toBe(874);
+ await page.locator('[data-tab="upgrades"]').click();
+ await page.locator('#upgrades').evaluate(el=>el.scrollTop=el.scrollHeight);
+ const button=await page.locator('[data-upgrade="vitality"]').boundingBox(),nav=await page.locator('.tab-bar').boundingBox();
+ expect(button.y+button.height).toBeLessThanOrEqual(nav.y);
+});
+
 test('phone home, small-screen navigation, world previews and companion sheets',async({page},info)=>{
  const errors=[];page.on('pageerror',error=>errors.push(error.message));
  await openGame(page);
