@@ -13,6 +13,8 @@ Open **http://localhost:3000**. The game fills the phone viewport; desktop brows
 
 ## Install and play offline
 
+For Vercel, import this repository with its root directory unchanged. `vercel.json` selects the Other framework preset, runs `npm run build`, and publishes `dist/` as static files. `server.mjs` is only for local development. Other static hosts can also publish `dist/` after running `npm run build`.
+
 Deploy the root PWA files and `assets/` to an HTTPS static host. On iPhone, open the HTTPS URL in Safari → Share → Add to Home Screen. On supported Android/desktop browsers, use the install option under game Settings or the browser's install control.
 
 The first visit downloads the complete game, including all six artwork assets, for offline use. Wait for loading to finish and for Settings to say **Ready to play offline**. Service workers require HTTPS, except on localhost. A phone opening a computer's plain HTTP LAN address can preview the game but cannot install its offline service worker.
@@ -63,4 +65,4 @@ Screenshots and failure traces go under `.artifacts/` (git-ignored). Desktop Saf
 - `assets/`: bundled artwork; see `assets/ARTWORK.md` for provenance and prompts.
 - `sw.js`, `manifest.webmanifest`: PWA installation and offline support.
 
-The earlier Swift experiment is archived under the ignored `.artifacts/native-experiment/` directory and is not part of this app. No commits, pushes, or external deployment were performed.
+The earlier Swift experiment is archived under the ignored `.artifacts/native-experiment/` directory and is not part of this app.
