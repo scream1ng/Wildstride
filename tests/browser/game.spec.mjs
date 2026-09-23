@@ -14,9 +14,9 @@ test('installed iPhone fills the screen when its viewport is shorter',async({pag
  await page.setViewportSize({width:402,height:812});
  await page.addInitScript(()=>{Object.defineProperty(navigator,'standalone',{value:true});Object.defineProperty(screen,'width',{value:402});Object.defineProperty(screen,'height',{value:874});});
  await openGame(page);
- expect((await page.locator('#app').boundingBox()).height).toBe(874);
+ for(const selector of ['html','body','#app'])expect((await page.locator(selector).boundingBox()).height).toBe(874);
  await page.setViewportSize({width:402,height:800});
- await expect.poll(async()=>(await page.locator('#app').boundingBox()).height).toBe(874);
+ for(const selector of ['html','body','#app'])await expect.poll(async()=>(await page.locator(selector).boundingBox()).height).toBe(874);
  await page.locator('[data-tab="upgrades"]').click();
  await page.locator('#upgrades').evaluate(el=>el.scrollTop=el.scrollHeight);
  const button=await page.locator('[data-upgrade="vitality"]').boundingBox(),nav=await page.locator('.tab-bar').boundingBox();
