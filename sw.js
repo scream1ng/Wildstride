@@ -1,4 +1,4 @@
-const CACHE='wildstride-pwa-v5';
+const CACHE='wildstride-pwa-v6';
 const FILES=['./','./index.html','./style.css','./app.js','./model.js','./runner.js','./renderer.js','./icons.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./assets/forest.webp','./assets/neon.webp','./assets/ocean.webp','./assets/creatures.webp','./assets/runners.webp','./assets/props.webp'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('wildstride-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
